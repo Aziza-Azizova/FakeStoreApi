@@ -1,10 +1,10 @@
-import { Link, useLocation, useParams } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import getApi from "../hooks/getApi";
 import Preloader from "../components/Preloader";
 
 function ProductsItem() {
     const path = useLocation().pathname;
-    const { data: product, loading } = getApi(`${path}`);
+    const { datas: product, loading } = getApi(`${path}`);
     if (loading) return <Preloader />
 
     return (

@@ -9,7 +9,7 @@ function postApi(param, body) {
                 method: "POST",
                 data: body
             });
-            console.log(data);
+            // console.log(data);
         } catch (e) {
             throw e;
         }

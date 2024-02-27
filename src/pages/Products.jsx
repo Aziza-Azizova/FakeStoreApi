@@ -6,7 +6,7 @@ import Modal from '../components/Modal';
 
 function Products() {
   const [modal, setModal] = useState(false);
-  const { data: products, loading } = getApi('/products');
+  const { datas: products, loading } = getApi('/products');
 
   if (loading) return <Preloader />
 

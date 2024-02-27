@@ -1,17 +1,18 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { Context } from "../context/Context";
 
 function getApi(param) {
-    const [data, setData] = useState([]);
+    const { datas, setDatas } = useContext(Context)
     const [loading, setLoading] = useState(true)
 
     async function getData(param) {
         try {
             let info = await axios.get(`${import.meta.env.VITE_BASE_URL}${param}`);
-            setData(info.data);
+            setDatas(info.data);
             setLoading(false)
         } catch (e) {
-            throw e;
+            throw e;    
         }
     }
 
@@ -20,7 +21,7 @@ function getApi(param) {
     }, [])
 
 
-    return {data, loading}
+    return {datas, loading}
 }
 
 export default getApi

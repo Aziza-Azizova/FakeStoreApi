@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import postApi from '../hooks/postApi';
 import getApi from '../hooks/getApi';
+import { Context } from '../context/Context';
 
 function Modal({ modal: { modal, setModal } }) {
+    const { datas, setDatas } = useContext(Context)
     const { data } = postApi('/products');
 
+
     const [obj, setObj] = useState({
+        id: data,
         title: "",
         description: "",
         price: "",
@@ -21,8 +25,11 @@ function Modal({ modal: { modal, setModal } }) {
     }
 
     function send(){
-        postApi('/products', obj)
+        postApi('/products', obj);
+        setDatas([...datas, obj]);
+        setModal(false);
     }
+
 
     getApi('/products');
 
